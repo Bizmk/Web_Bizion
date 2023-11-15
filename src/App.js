@@ -1,24 +1,37 @@
-import logo from './logo.svg';
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from 'react-router-dom';
+import LoginForm from './LoginForm';
+import CrudUsers from './CrudUsers';
+import CrudUsersUpdate from './CrudUsersUpdate';
+import SuccessMessage from './SuccessMessage';
+import UserTable from './UserTable';
+
+import Home  from './Home';
+
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<LoginForm />} />
+          <Route path="/crud-users" element={<CrudUsers />} />
+          <Route path="/crud-users-update" element={<CrudUsersUpdate />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/user-table" element={<UserTable />} />
+          <Route path="/success" element={<SuccessMessage />} />
+          
+        </Routes>
+        
+      </div>
+    </Router>
+    
   );
 }
 
