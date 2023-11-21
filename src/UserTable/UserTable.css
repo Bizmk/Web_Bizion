@@ -333,7 +333,7 @@
   
 
   .home-button-add, .icon-button {
-    width: 25px; /* Tamaño más pequeño para los botones */
+    width: 25px; 
     height: 25px;
   }
 
@@ -343,7 +343,7 @@
   }
 
   table, th, td {
-    padding: 5px; /* Menos padding para celdas y cabeceras de tabla */
+    padding: 5px; 
   }
 
   th, td {
@@ -356,27 +356,26 @@
 
 @media (max-width: 480px) {
   .content {
-    padding: 10px; /* Aún menos padding */
-    height: calc(100vh - 60px); /* Ajustar la altura si es necesario */
+    padding: 10px; 
+    height: calc(100vh - 60px); 
   }
 
   .users {
-    font-size: 30px; /* Tamaño de fuente más pequeño para el título */
+    font-size: 30px; 
   }
 
   .search-container {
-    margin-left: 2%; /* Menos margen lateral */
+    margin-left: 2%; 
     margin-right: 2%;
-    width: 96%; /* Utilizar casi todo el ancho disponible */
+    width: 96%; 
   }
 
   .search-box {
-    font-size: 18px; /* Tamaño de fuente más pequeño para la caja de búsqueda */
-    padding-left: 35px; /* Menos padding a la izquierda */
+    padding-left: 35px; 
   }
 
   .home-button-add, .icon-button {
-    width: 20px; /* Tamaño más pequeño para los botones */
+    width: 20px; 
     height: 20px;
   }
 
@@ -386,10 +385,10 @@
   }
 
   table, th, td {
-    padding: 4px; /* Menos padding para celdas y cabeceras de tabla */
+    padding: 4px;
   }
 
   th, td {
-    font-size: 16px; /* Tamaño de fuente más pequeño para los textos dentro de la tabla */
+    font-size: 16px; 
   }
 }

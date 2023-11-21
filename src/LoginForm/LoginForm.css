@@ -29,7 +29,9 @@
     font-size: 16px; 
     margin-bottom: 10px; 
     border-radius: 5px; 
-    border: 1px solid #ccc; 
+    border: 1px solid #00d2c3; 
+    background-color: #243b49; 
+    color: #00d2c3;  
   }
   
   .login-form button {
@@ -43,7 +45,7 @@
     color: #ffffff;
     background-color: #00d2c3;
     cursor: pointer;
-    
+    color: #1b2b34;
   }
   
   .or-divider {

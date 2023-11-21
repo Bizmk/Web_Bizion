@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import './Home.css';
-import UserTable from './UserTable';
-import Bizion from "./Bizion titulo.svg"
-import Dashboard from './Dashboard';
+import UserTable from '../UserTable/UserTable';
+import Bizion from "../Icons/Bizion titulo.svg"
+import Dashboard from '../Dashboard/Dashboard';
 
 function Home() {
-    const navigate = useNavigate();
     const location = useLocation();
     const [visibleComponent, setVisibleComponent] = useState('dashboard');
    
 
-    const handleLogoutClick = () => {
-        navigate('/');
-    };
+
 
     const showComponent = (componentName) => {
         setVisibleComponent(componentName);

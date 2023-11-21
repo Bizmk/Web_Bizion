@@ -1,13 +1,9 @@
-import apiAxios from './services/ApiAxios';
+import apiAxios from '../services/ApiAxios';
 import Swal from "sweetalert2";
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import UserTable from './UserTable';
-import Buho from './buho.svg';
-
-
+import Buho from '../Icons/buho.svg';
 import './CrudUsers.css';
-
+import FotoPerfil from '../Icons/foto-de-perfil.svg'
 
 const urlAdd = `users/add`;
 const urlUpdate = `users/update`;
@@ -16,11 +12,10 @@ const urlUpdate = `users/update`;
 
 function CrudUsers({ isOpen, onClose, userToEdit, onUserUpdate }) {
     
-    
     const [userId, setUserId] = useState(0);
     const [error, setError] = useState(null);
     const [isUserCreated, setIsUserCreated] = useState(false);
-    const navigate = useNavigate();
+
     const initialState = {
         cellphone: '',
         email: '',
@@ -33,58 +28,74 @@ function CrudUsers({ isOpen, onClose, userToEdit, onUserUpdate }) {
         place: '',
         position: '',
         template: '',
+        imagePreviewUrl: FotoPerfil,
     }
     const [formData, setFormData] = useState({initialState});
 
     const onSubmit = async (formData) => {
+        if (formData.password !== formData.repetirContrasena) {
+            setError('Las contraseñas no coinciden');
+            return false; // Retorna false para indicar que la validación falló
+        }
+
+         let formDataToSend = new FormData();
+        for (const key in formData) {
+            formDataToSend.append(key, formData[key]);
+        }
+        
         try {
           let response;
           let message = '';
   
           if (userToEdit) {
               // Modo de actualización
+              
               response = await apiAxios(urlUpdate, { ...formData, id: userToEdit.id });
-              message = 'Usuario actualizado con éxito.';
+              message = 'Edición Completada con éxito.';
           } else {
               // Modo de creación
                response = await apiAxios(urlAdd, formData);
-                message = 'Usuario creado con éxito.';
+                message = 'Registro Completado.';
             }
         
             Swal.fire({
-              title: 'Éxito!',
-              text: message,
-              imageUrl: './buho.svg',
-              imageWidth: 200,
-              imageAlt: 'Imagen personalizada'
-            
-
+              title: message,
+              imageUrl: Buho,
+              imageWidth: 275,
+              imageAlt: 'Buho de Bizion',
+              html: `<img src="/static/media/Bizion titulo.ad02ac63e5e080f7494e3c78d58a247c.svg" class="swal2-top-left-image" style="position: absolute; top: 16px; left: 16px; width: 200px;">`,
+              showCloseButton: true,
+              confirmButtonText: 'Volver',
+              confirmButtonColor: '#04dba2',
               
           });
           setFormData(initialState);
           setIsUserCreated(true);
-          onUserUpdate(); // Suponiendo que tienes una prop 'onUserUpdated' para actualizar la lista de usuarios en el componente padre
-          onClose(); // Cierra el modal si es necesario
+          onUserUpdate(); 
+          onClose(); 
+          return true;
         } catch (response) {
           Swal.fire({
             icon: "error",
             text: "Error al procesar la solicitud"
           });
+          return false;
         }
       };
 
       useEffect(() => {
+        let initialData = initialState;
         if (userToEdit) {
-          setFormData(userToEdit);
-        } else {
-          setFormData(initialState);
-        }
+            const imageKey = `user-${userToEdit.id}-image`;
+            const savedImage = localStorage.getItem(imageKey);
+            initialData = { ...userToEdit, imagePreviewUrl: savedImage || FotoPerfil };
+          
+        } 
+          setFormData(initialData)
+        
       }, [userToEdit]);
     
-    if (isUserCreated) {
-        const isUpdating = userToEdit != null;
-        
-    } 
+    
 
     
 
@@ -96,6 +107,21 @@ function CrudUsers({ isOpen, onClose, userToEdit, onUserUpdate }) {
 
     const defaultValue = (fieldName) => {
         return userToEdit && userToEdit[fieldName] ? userToEdit[fieldName] : '';
+    };
+
+    
+
+    const handleImageChange = (e) => {
+        if (e.target.files && e.target.files[0]) {
+            const file = e.target.files[0];
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                const imageKey = userToEdit ? `user-${userToEdit.id}-image` : 'new-user-image';
+                localStorage.setItem(imageKey, reader.result);
+                setFormData({ ...formData, imagePreviewUrl: reader.result });
+            };
+            reader.readAsDataURL(file);
+        }
     };
 
     const handleSubmit = async (e) => {
@@ -140,8 +166,23 @@ function CrudUsers({ isOpen, onClose, userToEdit, onUserUpdate }) {
     return (
         <div className="crud-users-modal">
             <div className="crud-users-content">
-                <h2 className="form-title">{userToEdit ? 'Actualizar Usuario' : 'Crear Usuario'}</h2>
+            <div className="image-upload-container">
+                <img src={formData.imagePreviewUrl || "path_to_default_placeholder_image"} className="image-preview" alt="profile"/>
+                <button type="button" className="image-upload-button" onClick={() => document.getElementById('imageInput').click()}>
+                    +
+                </button>
+                <input
+                    type="file"
+                    id="imageInput"
+                    name="image"
+                    accept=".jpg,.jpeg,.png,.gif"
+                    onChange={handleImageChange}
+                    style={{ display: 'none' }}
+                />
+            </div>
+                <h2 className="form-title">{userToEdit ? 'Editar Usuario' : 'Agregar Usuario'}</h2>
                 <form onSubmit={handleSubmit}>
+                    <label htmlFor="name" className="group-label">Nombre (s)</label>
                     <input
                         type="text"
                         name="name"
@@ -150,6 +191,7 @@ function CrudUsers({ isOpen, onClose, userToEdit, onUserUpdate }) {
                         onChange={handleChange}
                         className="form-input"
                     />
+                    <label htmlFor="second_name" className="group-label">Apellidos</label>
                     <input
                         type="text"
                         name="second_name"
@@ -158,14 +200,7 @@ function CrudUsers({ isOpen, onClose, userToEdit, onUserUpdate }) {
                         onChange={handleChange}
                         className="form-input"
                     />
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Correo"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="form-input"
-                    />
+                    <label htmlFor="cellphone" className="group-label">Telefono</label>
                     <input
                         type="number"
                         name="cellphone"
@@ -174,6 +209,16 @@ function CrudUsers({ isOpen, onClose, userToEdit, onUserUpdate }) {
                         onChange={handleChange}
                         className="form-input"
                     />
+                    <label htmlFor="email" className="group-label">Correo</label>
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Correo"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="form-input"
+                    />
+                    <label htmlFor="password" className="group-label">Contraseña</label>
                     <input
                         type="password"
                         name="password"
@@ -182,6 +227,7 @@ function CrudUsers({ isOpen, onClose, userToEdit, onUserUpdate }) {
                         onChange={handleChange}
                         className="form-input"
                     />
+                    <label htmlFor="repetirContraseña" className="group-label">Repetir Contraseña</label>                    
                     <input
                         type="password"
                         name="repetirContrasena"
@@ -190,6 +236,7 @@ function CrudUsers({ isOpen, onClose, userToEdit, onUserUpdate }) {
                         onChange={handleChange}
                         className="form-input"
                     />
+                    <label htmlFor="rol" className="group-label">Rol de Usuario</label>
                     <input
                         type="text"
                         name="rol"
@@ -198,6 +245,7 @@ function CrudUsers({ isOpen, onClose, userToEdit, onUserUpdate }) {
                         onChange={handleChange}
                         className="form-input"
                     />
+                    <label htmlFor="place" className="group-label">Puesto</label>
                     <input
                         type="text"
                         name="place"
@@ -206,6 +254,7 @@ function CrudUsers({ isOpen, onClose, userToEdit, onUserUpdate }) {
                         onChange={handleChange}
                         className="form-input"
                     />
+                    <label htmlFor="positon" className="group-label">Posición</label>
                     <input
                         type="text"
                         name="position"
@@ -214,6 +263,7 @@ function CrudUsers({ isOpen, onClose, userToEdit, onUserUpdate }) {
                         onChange={handleChange}
                         className="form-input"
                     />
+                    <label htmlFor="templete" className="group-label">Turno</label>
                     <input
                         type="text"
                         name="template"
@@ -223,14 +273,21 @@ function CrudUsers({ isOpen, onClose, userToEdit, onUserUpdate }) {
                         className="form-input"
                     />
                     <div className="form-buttons">
-                        <button type="button" onClick={onClose} className="close-button">
-                            Cerrar
-                        </button>
-                        <button className="submit-button" onClick={() => {
-                            onSubmit(formData);
+                        <button type="button" onClick={() => {
+                            onClose()
                             setFormData(initialState);
+                        }} className="close-button" > 
+                            Cerrar
+                            
+                        </button>
+                        <button className="submit-button" onClick={async () => {
+                            const isSuccessful = await onSubmit(formData);
+                            if (isSuccessful) {
+                                setFormData(initialState);
+                                onClose();
+                            }
                   }}>
-                            {userToEdit ? 'Actualizar' : 'Guardar'}
+                            {userToEdit ? 'Guardar' : 'Guardar'}
                                     
                         </button>
                         

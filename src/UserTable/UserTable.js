@@ -1,31 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import './UserTable.css';
 import { MdAdd, MdEdit, MdDelete } from 'react-icons/md';
 import { GoMultiSelect } from 'react-icons/go';
-import SearchIconSVG from './searchedIcon.svg';
-import apiAxios from './services/ApiAxios';
-import CrudUsers from './CrudUsers';
+import SearchIconSVG from '../Icons/searchedIcon.svg';
+import apiAxios from '../services/ApiAxios';
+import CrudUsers from '../CrudUsers/CrudUsers';
+import AlertIcon from '../Icons/alerticon.svg'
+import Buho from '../Icons/buho.svg';
+
 
 function UserTable() {
-  const navigate = useNavigate();
   const [isCrudModalOpen, setIsCrudModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedUser, setSelectedUser] = useState(null);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [userIdToDelete, setUserIdToDelete] = useState(null);
+
   const urlAdd = `users/`;
   const urlDelete = 'users/delete'
   const [users, setUsers] = useState([]);
   const [headers] = useState(["ID", "Nombre", "Apellido", "Posición", "Puesto", "Turno", "Rol de usuario"]);
-  const loadUsersFromStorage = () => {
-    const storedUsers = localStorage.getItem('users');
-    if (storedUsers) {
-      setUsers(JSON.parse(storedUsers));
-    }
-  };
+  
   useEffect(() => {
-    //loadUsersFromStorage();
+    
     loadUsers();
   }, []);
 
@@ -37,9 +34,7 @@ function UserTable() {
     user.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleCreateUserClick = () => {
-    navigate('/crud-users');
-  };
+  
 
   const loadUsers = async () => {
     try {
@@ -85,6 +80,7 @@ function UserTable() {
   const closeCrudModal = () => {
     setIsCrudModalOpen(false);
     setSelectedUser(null);
+    loadUsers();
   };
 
   const showDeleteModal = (user) => {
@@ -92,7 +88,19 @@ function UserTable() {
     setIsDeleteModalOpen(true);
   };
 
-
+  const Del = () => {
+    Swal.fire({
+      title: "Usuario Eliminado ",
+      imageUrl: Buho,
+      imageWidth: 275,
+      imageAlt: 'Buho de Bizion',
+      html: `<img src="/static/media/Bizion titulo.ad02ac63e5e080f7494e3c78d58a247c.svg" class="swal2-top-left-image" style="position: absolute; top: 16px; left: 16px; width: 200px;">`,
+      showCloseButton: true,
+      confirmButtonText: 'Volver',
+      confirmButtonColor: '#04dba2',
+      
+  });
+  };
 
   
 
@@ -158,12 +166,16 @@ function UserTable() {
       {isDeleteModalOpen && (
         <div className="delete-modal">
           <div className="delete-modal-content">
+            <img src={AlertIcon} alt="Biziion Logo" className="logo" />
             <h2>Confirmar Eliminación</h2>
             <p>¿Estás seguro de que quieres eliminar a: {selectedUser.name} de ID ({selectedUser.id})?</p>
             <button onClick={() => setIsDeleteModalOpen(false)} className="cancel-button">Cancelar</button>
-            <button onClick={handleDeleteUser}>Eliminar</button>
+            <button onClick={() => {
+              handleDeleteUser() 
+              Del()}} >Eliminar</button>
             
           </div>
+          
         </div>
       )}
       <CrudUsers key={selectedUser ? selectedUser.id : 'new'} isOpen={isCrudModalOpen} onClose={closeCrudModal}  userToEdit={selectedUser}  onUserUpdate={handleUserUpdated}/>

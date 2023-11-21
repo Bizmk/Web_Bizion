@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './LoginForm.css';
 import { useNavigate } from 'react-router-dom';
-import apiAxios from './services/ApiAxios';
-import Swal from "sweetalert2";
+import apiAxios from '../services/ApiAxios';
+import Bizion from "../Icons/Bizion titulo.svg"
+
 
 
 
@@ -27,6 +28,7 @@ function LoginForm() {
       if (response.statusResponse) {
         localStorage.setItem('userName', response.dataaxios.second_name);
         localStorage.setItem('userLastName', response.dataaxios.email);
+        localStorage.setItem('userProfileImage', response.dataaxios.profileImageUrl);
         console.log("NOMBRE", response.dataaxios.second_name)
         navigate('/home');
       } else {
@@ -38,14 +40,11 @@ function LoginForm() {
       setError('Error al procesar la solicitud');
     }
   };
-  const handleLoginClick = () => {
-    
-    navigate('/home');
-  };
+  
 
   return (
     <div className="login-container">
-      <h1 className="login-title">Bizi<span>ion</span></h1>
+      <img src={Bizion} alt="Biziion Logo" className="login-title" />
       <div className="login-form">
         <input type="text" name="cellphone" placeholder="Numero de Telefono" value={formData.cellphone} onChange={handleChange} /> 
         <input type="password" name="password" placeholder="Contraseña" value={formData.password}  onChange={handleChange}/>
