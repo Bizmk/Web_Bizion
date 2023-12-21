@@ -10,18 +10,29 @@
     object-fit: cover;
   }
   
-  .input-group {
-    margin-bottom: 1rem;
+  .input-group, .button-dropdown  {
+    margin-bottom: 10%;
+    
+  }
+
+  .button-dropdown  {
+    margin-left: 5%;
   }
   
   .input-group-text {
     background-color: #fff; /* Replace with the actual background color */
     border: none; /* Remove borders if present in the design */
   }
+  .ml-auto.mr-auto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   
   .input-group input {
     border: 1px solid #ddd; /* Replace with the actual color and border style */
     box-shadow: none; /* Remove default shadows */
+    
   }
   
   .input-group input:focus {
@@ -40,8 +51,11 @@
 
   .image-container {
     position: relative;
+    
+    left: 150%;
     width: 100px; /* Same as the image */
     height: 100px; /* Same as the image */
+    
   }
   
   
@@ -62,4 +76,12 @@
     right: 0;
     border-radius: 50%;
     /* Style your button with background color, size, etc. */
+  }
+
+  .register_button{
+    margin-left: 30%;
+  }
+
+  .card-register{
+    margin-left: 39%;
   }

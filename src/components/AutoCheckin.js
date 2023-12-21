@@ -85,7 +85,7 @@ function AutoCheckin ()  {
                 <Card className="card-login card-white">
                   <CardHeader>
                     
-                     <CardTitle tag="h2">Registro</CardTitle>
+                     <CardTitle className="card-register" tag="h2">Registro</CardTitle>
                   </CardHeader>
                   <CardBody>
                   <InputGroup
@@ -159,7 +159,7 @@ function AutoCheckin ()  {
                         onBlur={(e) => setState({ ...state, emailFocus: false })}
                       />
                     </InputGroup>
-                    <ButtonDropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
+                    <ButtonDropdown  className="button-dropdown" isOpen={dropdownOpen} toggle={toggleDropdown}>
                         <DropdownToggle caret color="primary">
                           ¿De qué empresa nos visita?
                         </DropdownToggle>
@@ -172,7 +172,7 @@ function AutoCheckin ()  {
                         </DropdownMenu>
 
                     </ButtonDropdown>
-                    <ButtonDropdown isOpen={dropdownOpen1} toggle={toggleDropdown1}>
+                    <ButtonDropdown className="button-dropdown" isOpen={dropdownOpen1} toggle={toggleDropdown1}>
                         <DropdownToggle caret color="primary">
                           ¿A dónde te diriges?
                         </DropdownToggle>
@@ -185,7 +185,7 @@ function AutoCheckin ()  {
                         </DropdownMenu>
 
                     </ButtonDropdown>
-                    <ButtonDropdown isOpen={dropdownOpen2} toggle={toggleDropdown2}>
+                    <ButtonDropdown className="button-dropdown" isOpen={dropdownOpen2} toggle={toggleDropdown2}>
                         <DropdownToggle caret color="primary">
                           ¿A dónde te diriges?
                         </DropdownToggle>
@@ -220,7 +220,7 @@ function AutoCheckin ()  {
                   <CardFooter>
                     <Button
                       block
-                      className="mb-3"
+                      className="register_button"
                       color="primary"
                       href="#pablo"
                       onClick={(e) => e.preventDefault()}
