@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './LoginForm.css';
 import { useNavigate } from 'react-router-dom';
 import apiAxios from '../services/ApiAxios';
-import Bizion from "../Icons/Bizion titulo.svg"
+import Bizion from "../Icons/Group 2383.svg"
 
 
 
@@ -28,7 +28,7 @@ function LoginForm() {
       if (response.statusResponse) {
         localStorage.setItem('userName', response.dataaxios.second_name);
         localStorage.setItem('userLastName', response.dataaxios.email);
-        localStorage.setItem('userProfileImage', response.dataaxios.profileImageUrl);
+        localStorage.setItem('userProfileImage', response.dataaxios.cellphone);
         console.log("NOMBRE", response.dataaxios.second_name)
         navigate('/home');
       } else {

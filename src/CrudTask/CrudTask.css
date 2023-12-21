@@ -1,0 +1,212 @@
+.modal-overlay {
+    position: fixed;
+    top: 0px;
+    left: 1400px;
+    right: 0;
+    bottom: 550px;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal {
+   
+    background:  #1b2b34;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    width: 100px; /* O el ancho que prefieras */
+    /* Asegúrate de que el modal se vea encima del overlay */
+    z-index: 1000;
+  }
+  
+  /* Estilos adicionales para que se parezca al diseño de tu imagen */
+  .modal h2 {
+    font-size: 18px;
+    color: #333; /* Color del texto del título */
+    margin-bottom: 16px; /* Espaciado debajo del título */
+  }
+  
+  .modal form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .modal input {
+    background-color:  #1b2b34;
+    color: white;
+    margin-bottom: 12px; /* Espaciado entre los elementos del formulario */
+    padding: 8px; /* Acolchado dentro del input */
+    
+  }
+  
+  .modal button {
+    padding: 10px; /* Acolchado para los botones */
+    border: none;
+    border-radius: 4px;
+    margin-top: 8px; /* Espaciado entre botones */
+  }
+  
+  .modal button[type="submit"] {
+    background-color:  #1b2b34; /* Color de fondo para el botón de agregar */
+    color: #04dba2; /* Texto blanco para contraste */
+  }
+  
+  .modal button[type="button"] {
+    background-color: #f44336; /* Color de fondo para el botón de cancelar */
+    color: white; /* Texto blanco para contraste */
+  }
+  .crud-task-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .crud-task-content {
+    background:  #1b2b34; /* Ajusta el color de fondo según tu diseño */
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px; /* Ajusta el ancho según tu diseño */
+    font-size: 24px; /* Tamaño de fuente */
+    color: #04dba2; /* Color */
+    text-align: center; /* Alineación */
+  }
+  
+  .crud-task-content h2 {
+    color: #04dba2; /* Ajusta el color según tu diseño */
+    margin-bottom: 16px;
+  }
+  
+  .crud-task-content form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .crud-task-content input,
+.crud-task-content textarea {
+    border: 2px solid #04dba2; /* Estilo de borde */
+    background-color: #1b2b34; /* Color de fondo */
+    color: #ffff; /* Color del texto */
+    box-shadow: 0px 0px 10px #04dba2; /* Sombra de caja */
+    font-size: 16x;
+    /* Otros estilos necesarios */
+}
+
+.crud-task-content textarea {
+  width: 93%;
+  height: 150px;      /* Altura inicial deseada */
+    min-height: 100px;  /* Altura mínima */
+    max-height: 300px;  /* Altura máxima */
+    padding: 10px;      /* Espaciado interno para el texto */
+    border: 1px solid #ccc; /* Bordes (ajustable según tu diseño) */
+    border-radius: 4px; /* Esquinas redondeadas */
+    resize: vertical;   /* Permite al usuario ajustar la altura*/
+}
+  
+  .crud-task-actions button {
+    margin-top: 12px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Botón de Guardar */
+  .crud-task-actions button[type="submit"] {
+    background-color: #04dba2; /* Ajusta el color de fondo según tu diseño */
+    color: #1b2b34; /* Color del texto */
+    box-shadow: 0px 0px 10px #04dba2; /* Sombra de caja */
+  }
+  
+  /* Botón de Cancelar */
+  .crud-task-actions button[type="button"] {
+    background-color: #e74c3c; /* Ajusta el color de fondo según tu diseño */
+    color: white;
+  }
+  .group-label {
+    font-size: 20px; /* O un tamaño específico como 12px */
+    text-align: left; /* Alineación a la izquierda */
+    display: block; /* Asegura que el label ocupe su propia línea */
+    margin-bottom: 5px; /* Ajusta el espacio debajo del label */
+    color: #04dba2; /* Color del texto de los label */
+  }
+
+  .crud-task-content select{
+    border: 2px solid #04dba2; /* Estilo de borde */
+    background-color: #1b2b34; /* Color de fondo */
+    color: #ffff; /* Color del texto */
+    box-shadow: 0px 0px 10px #04dba2; /* Sombra de caja */
+    font-size: 16px;
+
+  }
+
+
+@media (max-width: 1700px) {
+.modal-overlay {
+  position: fixed;
+  top: 0px;
+  left: 1100px;
+  right: 0;
+  bottom: 300px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+ 
+  background:  #1b2b34;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  width: 100px; /* O el ancho que prefieras */
+  /* Asegúrate de que el modal se vea encima del overlay */
+  z-index: 1000;
+}
+
+/* Estilos adicionales para que se parezca al diseño de tu imagen */
+.modal h2 {
+  font-size: 18px;
+  color: #333; /* Color del texto del título */
+  margin-bottom: 16px; /* Espaciado debajo del título */
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal input {
+  background-color:  #1b2b34;
+  color: white;
+  margin-bottom: 12px; /* Espaciado entre los elementos del formulario */
+  padding: 8px; /* Acolchado dentro del input */
+  
+}
+
+.modal button {
+  padding: 10px; /* Acolchado para los botones */
+  border: none;
+  border-radius: 4px;
+  margin-top: 8px; /* Espaciado entre botones */
+}
+
+.modal button[type="submit"] {
+  background-color:  #1b2b34; /* Color de fondo para el botón de agregar */
+  color: #04dba2; /* Texto blanco para contraste */
+}
+
+.modal button[type="button"] {
+  background-color: #f44336; /* Color de fondo para el botón de cancelar */
+  color: white; /* Texto blanco para contraste */
+}
+}

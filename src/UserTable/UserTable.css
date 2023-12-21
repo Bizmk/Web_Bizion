@@ -99,6 +99,9 @@
 .home-button:hover {
   background-color: #16A085;
 }
+.icon-task:hover {
+  fill: #16A085; 
+}
 
 .home-button-add {
   background-color: white;   
@@ -168,6 +171,9 @@
   width: 20px; 
   height: 20px;
 }
+
+
+
 
 .search-container {
   display: flex;
@@ -303,6 +309,23 @@
 .delete-modal-content button:hover {
   opacity: 0.8;
 }
+
+.icon-task {
+  background-color: transparent; /* Fondo transparente */
+  color: transparent; /* Icono transparente */
+  border: none; /* Sin borde */
+  cursor: pointer; /* Cursor tipo pointer para indicar que es clickeable */
+  outline: none; /* Sin contorno al hacer clic */
+}
+td:hover .icon-task {
+  color:  #04dba2; /* Cambia el color a verde al pasar el ratón por encima */
+}
+
+/* Opcional: Agrega una transición para un cambio suave */
+.icon-task {
+  transition: color 0.3s ease;
+}
+
 
 @media (max-width: 768px) {
   .content {

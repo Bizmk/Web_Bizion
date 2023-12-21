@@ -1,0 +1,65 @@
+.AutoCheckin {
+    font-family: 'Your Font', sans-serif; /* Replace 'Your Font' with the actual font used in the design */
+    color: #333; /* Replace with the actual color */
+  }
+  
+  .image-preview {
+    width: 100px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
+    border-radius: 50%; /* If the image is circular */
+    object-fit: cover;
+  }
+  
+  .input-group {
+    margin-bottom: 1rem;
+  }
+  
+  .input-group-text {
+    background-color: #fff; /* Replace with the actual background color */
+    border: none; /* Remove borders if present in the design */
+  }
+  
+  .input-group input {
+    border: 1px solid #ddd; /* Replace with the actual color and border style */
+    box-shadow: none; /* Remove default shadows */
+  }
+  
+  .input-group input:focus {
+    box-shadow: none; /* Remove focus shadow */
+  }
+  
+  .card-login {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adjust or remove shadow as per the design */
+    border: none; /* Remove borders if present in the design */
+  }
+  
+  .btn-primary {
+    background-color: #5cb85c; /* Replace with the actual background color */
+    border-color: #4cae4c; /* Replace with the actual border color */
+  }
+
+  .image-container {
+    position: relative;
+    width: 100px; /* Same as the image */
+    height: 100px; /* Same as the image */
+  }
+  
+  
+  .image-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #eee; /* Placeholder color */
+    border-radius: 50%; /* If you want a circular placeholder */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem; /* Adjust the size of the '+' icon */
+  }
+  
+  .add-image-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 50%;
+    /* Style your button with background color, size, etc. */
+  }

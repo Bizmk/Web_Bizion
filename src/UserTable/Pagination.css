@@ -1,0 +1,39 @@
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin-top: 20px;
+  }
+  
+  .page-item {
+    background-color: #444f5e;
+    color: white;
+    padding: 5px 5px;
+    margin: 0 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+
+  .page-item:hover {
+    color: #04dba2;
+    
+  }
+  
+  
+  .page-item.disabled {
+    background-color:#444f5e;
+
+    color: white;
+    cursor: not-allowed;
+    
+  }
+  
+  .page-item.current {
+    padding: 0px 5px;
+    background-color: transparent;
+    color: white;
+    border: none;
+  }

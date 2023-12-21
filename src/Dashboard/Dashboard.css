@@ -1,3 +1,10 @@
 .user{
     color: white;
 }
+.profile-image {
+    border-radius: 50%; /* Hace que la imagen sea redonda */
+    border: 3px solid #333; /* Añade un marco negro de 3px */
+    width: 200px; /* Ajusta el ancho de la imagen */
+    height: 200px; /* Ajusta la altura de la imagen */
+    object-fit: cover; /* Asegura que la imagen se ajuste bien */
+}

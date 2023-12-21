@@ -20,8 +20,7 @@ const apiAxios = async (path, params) => {
     registros: null,
     message: null,
   };
-  console.log('Ruta aqui')
-  console.log(path)
+  
   const defaultOptions = {
     headers: {
       "Content-Type": "application/json;charset=UTF-8",

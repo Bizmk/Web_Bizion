@@ -1,0 +1,38 @@
+/* Camara.css */
+
+.camera-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.camera-header {
+    margin-bottom: 10px;
+}
+
+.webcam-view {
+    margin: auto;
+    border: 1px solid #ddd; /* Add border styling as required */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
+}
+
+.capture-button {
+    margin-top: 10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red !important; 
+    border: none;
+    color: white;
+}
+
+.cancel-button {
+    margin-top: 10px;
+    display: block; /* Set to block to take full width */
+    color: #333; /* Adjust color as needed */
+    border: none;
+}
+
+/* Additional styling can be added as per your design requirements */
