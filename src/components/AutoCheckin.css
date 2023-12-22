@@ -85,3 +85,9 @@
   .card-register{
     margin-left: 39%;
   }
+
+  @media (max-width: 768px) {
+  .card-login {
+    padding: 20px;
+  }
+}

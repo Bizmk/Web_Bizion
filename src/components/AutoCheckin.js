@@ -22,6 +22,7 @@ import {
   DropdownItem, 
   DropdownMenu, 
   DropdownToggle,
+  Row,
 } from "reactstrap";
 
 
@@ -55,7 +56,7 @@ function AutoCheckin ()  {
     const handleCapture = (imageSrc) => {
       setState({ ...state, imagePreview: imageSrc });
       setCapturedImage(imageSrc);
-      setShowCamera(false); // Hide camera after capture
+      setShowCamera(false); 
     };
 
     const toggleDropdown = () => {
@@ -79,13 +80,14 @@ function AutoCheckin ()  {
     return (
       <>
         <div className="content">
-          <Container>
-            <Col className="ml-auto mr-auto" lg="4" md="6">
+          <Container >
+          <Row style={{ maxHeight: '600px' }} >
+            <Col className="ml-auto mr-auto" lg="8" md="8" xs="12">
               <Form className="form">
                 <Card className="card-login card-white">
                   <CardHeader>
                     
-                     <CardTitle className="card-register" tag="h2">Registro</CardTitle>
+                  <CardTitle className="card-register" tag="h2">Registro</CardTitle>
                   </CardHeader>
                   <CardBody>
                   <InputGroup
@@ -233,6 +235,7 @@ function AutoCheckin ()  {
                 </Card>
               </Form>
             </Col>
+            </Row>
           </Container>
         </div>
       </>
